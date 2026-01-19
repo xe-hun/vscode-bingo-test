@@ -1,11 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap');
 @import 'tailwindcss';
 
 @theme {
-  --color-accent: #2563eb;
-  --color-accent-light: #3b82f6;
+  --color-accent: #7c3aed;
+  --color-accent-light: #a855f7;
   --color-marked: #dcfce7;
   --color-marked-border: #22c55e;
   --color-bingo: #fbbf24;
+  --color-neon-pink: #ff1493;
+  --color-sky-blue: #0ea5e9;
+}
+
+/* CSS Variables for Bubble Aesthetics */
+:root {
+  --bubble-gradient-1: linear-gradient(135deg, #fda3c3 0%, #c781fa 50%, #a78bfa 100%);
+  --bubble-gradient-2: linear-gradient(135deg, #93c5fd 0%, #67e8f9 50%, #60a5fa 100%);
+  --bubble-gradient-3: linear-gradient(135deg, #86efac 0%, #d8b4fe 50%, #f472b6 100%);
+  --bubble-gradient-4: linear-gradient(135deg, #fda3b1 0%, #fde047 50%, #f472b6 100%);
+  
+  --glow-pink: 0 0 20px rgba(255, 20, 147, 0.6), 0 0 40px rgba(255, 20, 147, 0.3);
+  --glow-purple: 0 0 20px rgba(124, 58, 237, 0.6), 0 0 40px rgba(124, 58, 237, 0.3);
+  --glow-cyan: 0 0 20px rgba(34, 211, 238, 0.6), 0 0 40px rgba(34, 211, 238, 0.3);
+  --glow-green: 0 0 20px rgba(34, 197, 94, 0.8), 0 0 40px rgba(34, 197, 94, 0.4);
 }
 
 html,
@@ -18,4 +34,138 @@ body {
   margin: 0;
   font-family: system-ui, -apple-system, sans-serif;
   -webkit-tap-highlight-color: transparent;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+  font-weight: 700;
+}
+
+.heading-poppins {
+  font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+  font-weight: 700;
+}
+
+/* Animations */
+@keyframes spring-bounce {
+  0% {
+    transform: scale(0.95);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes gentle-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: var(--glow-purple);
+  }
+  50% {
+    box-shadow: var(--glow-purple), 0 0 60px rgba(124, 58, 237, 0.4);
+  }
+}
+
+@keyframes scale-in-with-glow {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes marked-glow {
+  0% {
+    box-shadow: 0 0 10px rgba(34, 197, 94, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(34, 197, 94, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(34, 197, 94, 0.4);
+  }
+}
+
+/* Utility Classes */
+.spring-bounce {
+  animation: spring-bounce 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+.gentle-pulse {
+  animation: gentle-pulse 2s ease-in-out infinite;
+}
+
+.glow-pulse {
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+.scale-in-glow {
+  animation: scale-in-with-glow 0.4s ease-out forwards;
+}
+
+.marked-glow {
+  animation: marked-glow 0.6s ease-in-out;
+}
+
+.bubble-glow-1 {
+  box-shadow: var(--glow-pink), 0 8px 24px rgba(253, 163, 195, 0.4);
+}
+
+.bubble-glow-2 {
+  box-shadow: var(--glow-cyan), 0 8px 24px rgba(147, 197, 253, 0.4);
+}
+
+.bubble-glow-3 {
+  box-shadow: var(--glow-purple), 0 8px 24px rgba(216, 180, 254, 0.4);
+}
+
+.bubble-glow-4 {
+  box-shadow: var(--glow-pink), 0 8px 24px rgba(253, 163, 177, 0.4);
+}
+
+/* Gradient Bubble Classes */
+.bubble-gradient-1 {
+  background: var(--bubble-gradient-1);
+  color: white;
+}
+
+.bubble-gradient-2 {
+  background: var(--bubble-gradient-2);
+  color: white;
+}
+
+.bubble-gradient-3 {
+  background: var(--bubble-gradient-3);
+  color: white;
+}
+
+.bubble-gradient-4 {
+  background: var(--bubble-gradient-4);
+  color: white;
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

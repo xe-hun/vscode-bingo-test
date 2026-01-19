@@ -7,28 +7,49 @@ interface BingoSquareProps {
 }
 
 export function BingoSquare({ square, isWinning, onClick }: BingoSquareProps) {
-  const baseClasses =
-    'relative flex items-center justify-center p-1 text-center border border-gray-300 rounded transition-all duration-150 select-none min-h-[60px] text-xs leading-tight';
+  // Cycle through 4 bubble gradients based on square position
+  const gradientIndex = square.id % 4;
+  const gradients = ['bubble-gradient-1', 'bubble-gradient-2', 'bubble-gradient-3', 'bubble-gradient-4'];
+  const glowClasses = ['bubble-glow-1', 'bubble-glow-2', 'bubble-glow-3', 'bubble-glow-4'];
+  const currentGradient = gradients[gradientIndex];
+  const currentGlow = glowClasses[gradientIndex];
 
-  const stateClasses = square.isMarked
-    ? isWinning
-      ? 'bg-amber-200 border-amber-400 text-amber-900'
-      : 'bg-marked border-marked-border text-green-800'
-    : 'bg-white text-gray-700 active:bg-gray-100';
+  // Handle different states for styling
+  const baseClasses = 'relative flex items-center justify-center p-2 text-center rounded-xl transition-all duration-200 select-none min-h-[70px] text-xs leading-tight font-medium cursor-pointer';
 
-  const freeSpaceClasses = square.isFreeSpace ? 'font-bold text-sm' : '';
+  let stateClasses = '';
+  
+  if (square.isFreeSpace) {
+    // Free space styling - special bubble with glow
+    stateClasses = `${currentGradient} ${currentGlow} text-white font-bold text-sm shadow-lg opacity-90`;
+  } else if (square.isMarked && isWinning) {
+    // Winning marked state - bright green with intense glow
+    stateClasses = 'bg-gradient-to-br from-emerald-200 to-green-400 text-white font-bold shadow-lg marked-glow scale-100';
+  } else if (square.isMarked) {
+    // Marked state (non-winning) - bright green with glow
+    stateClasses = 'bg-gradient-to-br from-emerald-200 to-green-400 text-white font-bold shadow-lg marked-glow';
+  } else {
+    // Unmarked state - gradient bubble with glow and hover effects
+    stateClasses = `${currentGradient} ${currentGlow} text-white hover:shadow-2xl hover:scale-105 active:scale-95`;
+  }
+
+  const handleClick = () => {
+    if (!square.isFreeSpace) {
+      onClick();
+    }
+  };
 
   return (
     <button
-      onClick={onClick}
+      onClick={handleClick}
       disabled={square.isFreeSpace}
-      className={`${baseClasses} ${stateClasses} ${freeSpaceClasses}`}
+      className={`${baseClasses} ${stateClasses}`}
       aria-pressed={square.isMarked}
       aria-label={square.isFreeSpace ? 'Free space' : square.text}
     >
-      <span className="wrap-break-word hyphens-auto">{square.text}</span>
+      <span className="wrap-break-word hyphens-auto drop-shadow-sm">{square.text}</span>
       {square.isMarked && !square.isFreeSpace && (
-        <span className="absolute top-0.5 right-0.5 text-green-600 text-xs">✓</span>
+        <span className="absolute top-1 right-1 text-white text-sm font-bold drop-shadow-md animate-gentle-pulse">✓</span>
       )}
     </button>
   );

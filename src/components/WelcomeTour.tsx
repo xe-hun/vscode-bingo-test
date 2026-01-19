@@ -45,27 +45,27 @@ export function WelcomeTour() {
   }
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 animate-in fade-in duration-300">
-      <div className="bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 rounded-2xl p-8 max-w-md mx-4 shadow-2xl border border-purple-400/30 animate-in scale-in-95 duration-300">
+    <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50 animate-in fade-in duration-300">
+      <div className="bg-linear-to-br from-purple-300 via-pink-200 to-purple-400 rounded-3xl p-8 max-w-md mx-4 shadow-2xl border border-white/50 scale-in-glow">
         <div className="space-y-6">
-          <div className="space-y-2">
-            <h2 className="text-3xl font-bold text-white">{currentStep.title}</h2>
-            <p className="text-purple-100 text-lg leading-relaxed">
+          <div className="space-y-3">
+            <h2 className="heading-poppins text-3xl font-bold text-white drop-shadow-md">{currentStep.title}</h2>
+            <p className="text-white/95 text-lg leading-relaxed font-medium drop-shadow-sm">
               {currentStep.description}
             </p>
           </div>
 
           <div className="flex items-center justify-between pt-4">
-            <div className="flex gap-1">
+            <div className="flex gap-2">
               {TOUR_STEPS.map((_, index) => (
                 <div
                   key={index}
-                  className={`h-2 rounded-full transition-all duration-300 ${
+                  className={`rounded-full transition-all duration-300 ${
                     index === step
-                      ? "bg-white w-6"
+                      ? "bg-white w-6 h-2.5 shadow-md"
                       : index < step
-                        ? "bg-purple-300 w-2"
-                        : "bg-purple-600 w-2"
+                        ? "bg-green-300 w-2.5 h-2.5"
+                        : "bg-white/50 w-2.5 h-2.5"
                   }`}
                 />
               ))}
@@ -75,13 +75,13 @@ export function WelcomeTour() {
           <div className="flex gap-3 pt-2">
             <button
               onClick={handleSkip}
-              className="px-4 py-2 text-purple-200 hover:text-white transition-colors text-sm font-medium"
+              className="px-4 py-2 text-white/80 hover:text-white transition-colors text-sm font-medium active:scale-95"
             >
               Skip
             </button>
             <button
               onClick={handleNext}
-              className="ml-auto px-6 py-2 bg-white text-purple-900 rounded-lg hover:bg-purple-50 transition-all duration-200 font-semibold shadow-lg hover:shadow-xl active:scale-95"
+              className="ml-auto px-6 py-2 bg-linear-to-r from-emerald-300 to-green-400 hover:from-emerald-400 hover:to-green-500 text-white rounded-lg transition-all duration-200 font-bold shadow-lg hover:shadow-xl active:scale-95 drop-shadow-md"
             >
               {isLast ? "Start Playing" : "Next"}
             </button>
