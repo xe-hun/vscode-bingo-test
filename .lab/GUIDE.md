@@ -67,7 +67,7 @@ See `.github/prompts/setup.prompt.md`.
 Result: All future requests will have basic map of the workspace.
 
 ### Task: Background agents
-
+w
 **TL;DR:** Handoff tasks that don’t require handholding to background agents, which execute them isolated in git worktrees for quick parallel local iteration.
 
 1. Chat `+` > `New background agent` / `New cloud agent`:
