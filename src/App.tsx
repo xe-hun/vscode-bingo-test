@@ -1,7 +1,9 @@
-import { useBingoGame } from './hooks/useBingoGame';
-import { StartScreen } from './components/StartScreen';
-import { GameScreen } from './components/GameScreen';
-import { BingoModal } from './components/BingoModal';
+import { useMemo } from "react";
+import { useBingoGame } from "./hooks/useBingoGame";
+import { StartScreen } from "./components/StartScreen";
+import { GameScreen } from "./components/GameScreen";
+import { BingoModal } from "./components/BingoModal";
+import { WelcomeTour } from "./components/WelcomeTour";
 
 function App() {
   const {
@@ -15,8 +17,19 @@ function App() {
     dismissModal,
   } = useBingoGame();
 
-  if (gameState === 'start') {
-    return <StartScreen onStart={startGame} />;
+  const showTour = useMemo(() => {
+    if (typeof window === "undefined") return false;
+    const tourCompleted = localStorage.getItem("tour-completed");
+    return !tourCompleted;
+  }, []);
+
+  if (gameState === "start") {
+    return (
+      <>
+        <StartScreen onStart={startGame} />
+        {showTour && <WelcomeTour />}
+      </>
+    );
   }
 
   return (
@@ -24,13 +37,11 @@ function App() {
       <GameScreen
         board={board}
         winningSquareIds={winningSquareIds}
-        hasBingo={gameState === 'bingo'}
+        hasBingo={gameState === "bingo"}
         onSquareClick={handleSquareClick}
         onReset={resetGame}
       />
-      {showBingoModal && (
-        <BingoModal onDismiss={dismissModal} />
-      )}
+      {showBingoModal && <BingoModal onDismiss={dismissModal} />}
     </>
   );
 }
