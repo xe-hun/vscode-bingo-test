@@ -1,0 +1,8 @@
+<!-- Eco Leafy Green SVG: Sprout Icon -->
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <ellipse cx="24" cy="40" rx="6" ry="2" fill="#a3b18a"/>
+  <path d="M24 40C24 40 24 24 36 12" stroke="#4CAF50" stroke-width="2" stroke-linecap="round"/>
+  <path d="M24 40C24 40 24 24 12 12" stroke="#6a994e" stroke-width="2" stroke-linecap="round"/>
+  <ellipse cx="36" cy="12" rx="6" ry="10" fill="#81c784"/>
+  <ellipse cx="12" cy="12" rx="6" ry="10" fill="#b5c99a"/>
+</svg>

@@ -1,27 +1,45 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap');
 @import 'tailwindcss';
 
+
 @theme {
-  --color-accent: #7c3aed;
-  --color-accent-light: #a855f7;
-  --color-marked: #dcfce7;
-  --color-marked-border: #22c55e;
-  --color-bingo: #fbbf24;
-  --color-neon-pink: #ff1493;
-  --color-sky-blue: #0ea5e9;
+  --color-leaf-green: #4CAF50;
+  --color-leaf-dark: #357a38;
+  --color-leaf-light: #81c784;
+  --color-moss: #a3b18a;
+  --color-fern: #6a994e;
+  --color-bark: #7c6f57;
+  --color-sunlight: #ffe066;
+  --color-dew: #f4f9f4;
 }
 
-/* CSS Variables for Bubble Aesthetics */
+/* CSS Variables for Eco Leafy Green Aesthetics */
 :root {
-  --bubble-gradient-1: linear-gradient(135deg, #fda3c3 0%, #c781fa 50%, #a78bfa 100%);
-  --bubble-gradient-2: linear-gradient(135deg, #93c5fd 0%, #67e8f9 50%, #60a5fa 100%);
-  --bubble-gradient-3: linear-gradient(135deg, #86efac 0%, #d8b4fe 50%, #f472b6 100%);
-  --bubble-gradient-4: linear-gradient(135deg, #fda3b1 0%, #fde047 50%, #f472b6 100%);
-  
-  --glow-pink: 0 0 20px rgba(255, 20, 147, 0.6), 0 0 40px rgba(255, 20, 147, 0.3);
-  --glow-purple: 0 0 20px rgba(124, 58, 237, 0.6), 0 0 40px rgba(124, 58, 237, 0.3);
-  --glow-cyan: 0 0 20px rgba(34, 211, 238, 0.6), 0 0 40px rgba(34, 211, 238, 0.3);
-  --glow-green: 0 0 20px rgba(34, 197, 94, 0.8), 0 0 40px rgba(34, 197, 94, 0.4);
+  --leafy-gradient: linear-gradient(135deg, #e9f5db 0%, #b5c99a 100%);
+  --moss-gradient: linear-gradient(135deg, #a3b18a 0%, #6a994e 100%);
+  --leafy-shadow: 0 4px 24px 0 rgba(76, 175, 80, 0.15);
+  --moss-shadow: 0 2px 8px 0 rgba(163, 177, 138, 0.12);
+  --glow-leaf: 0 0 20px rgba(76, 175, 80, 0.3), 0 0 40px rgba(76, 175, 80, 0.15);
+  --glow-sunlight: 0 0 20px rgba(255, 224, 102, 0.3), 0 0 40px rgba(255, 224, 102, 0.15);
+}
+
+/* Override bubble classes for leafy theme */
+.bubble-gradient-1 {
+  background: var(--leafy-gradient);
+  color: #357a38;
+}
+.bubble-gradient-2 {
+  background: var(--moss-gradient);
+  color: #4CAF50;
+}
+.bubble-gradient-3 {
+  background: linear-gradient(135deg, #f4f9f4 0%, #a3b18a 100%);
+  color: #6a994e;
+}
+.bubble-gradient-4 {
+  background: linear-gradient(135deg, #ffe066 0%, #b5c99a 100%);
+  color: #7c6f57;
 }
 
 html,

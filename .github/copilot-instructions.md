@@ -73,6 +73,39 @@ board[id].isMarked = !board[id].isMarked;
 
 ---
 
+
+## Design Guide: Eco Leafy Green Theme
+
+**Theme:** Nature-inspired, calming, and vibrant. Uses rich leafy greens, moss, fern, bark brown, sunlight yellow, and dew white. All UI elements should feel organic, fresh, and accessible.
+
+**Core Principles:**
+- **Palette:** Use custom Tailwind colors: `leaf-green`, `leaf-dark`, `leaf-light`, `moss`, `fern`, `bark`, `sunlight`, `dew`.
+- **Typography:** Rounded, friendly sans-serif (Quicksand, Nunito, Poppins). Headings bold and playful, body clean and readable.
+- **Shapes:** Rounded corners (`rounded-leafy`), pill-shaped buttons, organic spacing.
+- **Textures:** Soft leafy gradients, subtle leaf patterns, gentle shadows, and SVG overlays.
+- **Iconography:** Use custom SVGs for leaves, sprouts, and confetti. Place in `src/assets/`.
+- **Motion:** Gentle transitions, breeze and confetti animations, subtle scale/hover effects.
+- **Accessibility:** High contrast for all states, visible focus rings, ARIA labels, and keyboard navigation.
+
+**Component Patterns:**
+- **StartScreen:** Leafy gradient background, floating leaf SVGs, organic logo, pill-shaped start button.
+- **GameScreen:** Earth-tone background, leafy borders, sprout-accented header, floating leaf controls.
+- **BingoBoard/BingoSquare:** High-contrast backgrounds, golden leaf for free space, animated overlays, clear text.
+- **BingoModal:** Animated leaf confetti, celebratory sprout icon, pill-shaped button.
+- **WelcomeTour:** Moss-green cards, leaf trail progress bar, playful illustrations.
+
+**Do:**
+- Use only the defined palette and assets for consistency.
+- Ensure all interactive elements are accessible and visually distinct in all states.
+- Keep the design playful, bold, and modern—avoid generic or default styles.
+
+**Don’t:**
+- Use low-contrast backgrounds for text or controls.
+- Add gradients or colors outside the Eco Leafy Green palette.
+- Skip accessibility or keyboard navigation for any new UI.
+
+
+
 ## Anti-Patterns
 
 ❌ Mutate board state directly  

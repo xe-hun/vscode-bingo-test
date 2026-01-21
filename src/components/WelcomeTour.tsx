@@ -45,27 +45,35 @@ export function WelcomeTour() {
   }
 
   return (
-    <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50 animate-in fade-in duration-300">
-      <div className="bg-linear-to-br from-purple-300 via-pink-200 to-purple-400 rounded-3xl p-8 max-w-md mx-4 shadow-2xl border border-white/50 scale-in-glow">
+    <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50 animate-in fade-in duration-300 overflow-hidden">
+      {/* Playful floating leaves */}
+      <img src="/src/assets/leaf.svg" alt="Leaf" className="absolute left-10 top-8 w-10 opacity-30 animate-breeze" style={{zIndex:2}} />
+      <img src="/src/assets/sprout.svg" alt="Sprout" className="absolute right-10 top-16 w-10 opacity-20 animate-bounce" style={{zIndex:2}} />
+
+      <div className="bg-moss-gradient rounded-leafy p-8 max-w-md mx-4 shadow-leafy border-2 border-moss scale-in-glow relative z-10">
         <div className="space-y-6">
-          <div className="space-y-3">
-            <h2 className="heading-poppins text-3xl font-bold text-white drop-shadow-md">{currentStep.title}</h2>
-            <p className="text-white/95 text-lg leading-relaxed font-medium drop-shadow-sm">
+          <div className="space-y-3 flex flex-col items-center">
+            <img src={step % 2 === 0 ? "/src/assets/leaf.svg" : "/src/assets/sprout.svg"} alt="Leafy step" className="w-10 mb-2" />
+            <h2 className="font-leafy text-3xl font-bold text-leaf-dark drop-shadow-md">{currentStep.title}</h2>
+            <p className="text-leaf-green text-lg leading-relaxed font-leafy font-medium drop-shadow-sm">
               {currentStep.description}
             </p>
           </div>
 
+          {/* Leaf trail progress bar */}
           <div className="flex items-center justify-between pt-4">
             <div className="flex gap-2">
               {TOUR_STEPS.map((_, index) => (
-                <div
+                <img
                   key={index}
-                  className={`rounded-full transition-all duration-300 ${
+                  src={index === step ? "/src/assets/leaf.svg" : index < step ? "/src/assets/sprout.svg" : "/src/assets/leaf.svg"}
+                  alt={index === step ? "Current step" : index < step ? "Completed step" : "Upcoming step"}
+                  className={`transition-all duration-300 ${
                     index === step
-                      ? "bg-white w-6 h-2.5 shadow-md"
+                      ? "w-7 h-7 opacity-100 drop-shadow"
                       : index < step
-                        ? "bg-green-300 w-2.5 h-2.5"
-                        : "bg-white/50 w-2.5 h-2.5"
+                        ? "w-5 h-5 opacity-70"
+                        : "w-4 h-4 opacity-40"
                   }`}
                 />
               ))}
@@ -75,14 +83,17 @@ export function WelcomeTour() {
           <div className="flex gap-3 pt-2">
             <button
               onClick={handleSkip}
-              className="px-4 py-2 text-white/80 hover:text-white transition-colors text-sm font-medium active:scale-95"
+              className="px-4 py-2 text-leaf-dark hover:text-leaf-green transition-colors text-sm font-leafy font-medium active:scale-95 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-sunlight focus-visible:ring-offset-2 focus-visible:ring-offset-moss"
+              aria-label="Skip tour"
             >
               Skip
             </button>
             <button
               onClick={handleNext}
-              className="ml-auto px-6 py-2 bg-linear-to-r from-emerald-300 to-green-400 hover:from-emerald-400 hover:to-green-500 text-white rounded-lg transition-all duration-200 font-bold shadow-lg hover:shadow-xl active:scale-95 drop-shadow-md"
+              className="ml-auto px-6 py-2 bg-leaf-green hover:bg-leaf-dark text-white rounded-leafy transition-all duration-200 font-leafy font-bold shadow-leafy hover:shadow-lg active:scale-95 drop-shadow-md flex items-center gap-2 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-sunlight focus-visible:ring-offset-2 focus-visible:ring-offset-moss"
+              aria-label={isLast ? "Start Playing" : "Next"}
             >
+              <img src="/src/assets/leaf.svg" alt="" aria-hidden="true" className="w-5 h-5" />
               {isLast ? "Start Playing" : "Next"}
             </button>
           </div>

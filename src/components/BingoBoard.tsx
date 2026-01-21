@@ -9,8 +9,10 @@ interface BingoBoardProps {
 
 export function BingoBoard({ board, winningSquareIds, onSquareClick }: BingoBoardProps) {
   return (
-    <div className="rounded-3xl p-4 bg-linear-to-br from-white/80 via-purple-100/20 to-blue-100/20 backdrop-blur-sm shadow-xl">
-      <div className="grid grid-cols-5 gap-2 w-full max-w-md aspect-square">
+    <div className="rounded-leafy p-6 bg-[--leafy-gradient] shadow-leafy border-4 border-moss/60 relative overflow-visible">
+      {/* Decorative leaf in corner */}
+      <img src="/src/assets/leaf.svg" alt="Leaf" className="absolute -top-6 -left-6 w-10 opacity-30 pointer-events-none" />
+      <div className="grid grid-cols-5 gap-3 w-full max-w-md aspect-square">
         {board.map((square) => (
           <BingoSquare
             key={square.id}

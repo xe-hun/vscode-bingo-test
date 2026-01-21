@@ -17,28 +17,37 @@ export function GameScreen({
   onReset,
 }: GameScreenProps) {
   return (
-    <div className="flex flex-col min-h-full bg-linear-to-br from-purple-100 via-pink-100 to-blue-100">
+    <div className="relative flex flex-col min-h-full bg-moss-gradient overflow-hidden">
+      {/* Leafy border accents */}
+      <img src="/src/assets/leaf.svg" alt="Leaf" className="absolute left-0 top-0 w-16 opacity-40 animate-breeze" style={{zIndex:1}} />
+      <img src="/src/assets/leaf.svg" alt="Leaf" className="absolute right-0 bottom-0 w-20 rotate-45 opacity-30 animate-breeze" style={{zIndex:1}} />
+
       {/* Header */}
-      <header className="flex items-center justify-between p-4 bg-linear-to-r from-white/60 via-purple-50/40 to-blue-50/40 backdrop-blur-sm border-b border-white/30 shadow-sm">
+      <header className="flex items-center justify-between p-4 bg-white/70 backdrop-blur-sm border-b border-moss shadow-moss relative z-10 rounded-b-leafy mx-2 mt-2">
         <button
           onClick={onReset}
-          className="text-purple-700 hover:text-purple-900 text-sm px-4 py-2 rounded-lg active:scale-95 transition-all duration-150 hover:bg-white/30 font-medium"
+          className="flex items-center gap-1 text-fern hover:text-leaf-dark text-sm px-4 py-2 rounded-leafy active:scale-95 transition-all duration-150 hover:bg-moss/30 font-leafy font-medium shadow-moss"
         >
-          ← Back
+          <img src="/src/assets/leaf.svg" alt="Back" className="w-5 h-5" />
+          Back
         </button>
-        <h1 className="heading-poppins font-bold text-transparent bg-clip-text bg-linear-to-r from-purple-600 to-pink-600">Soc Ops</h1>
+        <h1 className="font-leafy font-bold text-leaf-dark text-2xl flex items-center gap-2">
+          <img src="/src/assets/sprout.svg" alt="Sprout" className="w-7 h-7" />
+          Your Bingo Board
+        </h1>
         <div className="w-16"></div>
       </header>
 
       {/* Instructions */}
-      <p className="text-center text-purple-700 text-sm py-3 px-4 font-medium">
+      <p className="text-center text-fern text-sm py-3 px-4 font-leafy font-medium">
         Tap a square when you find someone who matches it.
       </p>
 
       {/* Bingo indicator */}
       {hasBingo && (
-        <div className="bg-linear-to-r from-green-200 to-emerald-200 text-green-900 text-center py-3 font-bold text-sm shadow-md border-b-2 border-green-400">
-          🎉 BINGO! You got a line!
+        <div className="bg-sunlight text-bark text-center py-3 font-bold text-sm shadow-leafy border-b-2 border-leaf-green rounded-leafy mx-4 animate-bounce">
+          <img src="/src/assets/confetti-leaf.svg" alt="Confetti" className="inline w-6 h-6 mr-2 align-middle animate-confetti" />
+          BINGO! You got a line!
         </div>
       )}
 
